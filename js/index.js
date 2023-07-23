@@ -34,11 +34,29 @@ const fetchAllCatagore = (category_id,category_name) =>{
 
 const fetchAllShowCatagores = (datas,category_name) =>{
     console.log(datas)
+    const allNews = document.getElementById('all-news');
+    allNews.innerHTML = " "
     document.getElementById('news-counts').innerText = datas.length;
     document.getElementById('catagore-names').innerText = category_name;
 
-    // datas.forEach(data =>{
-     
-    // })
+    datas.forEach(data =>{
+        console.log(data.details)
+     allNews.innerHTML += `
+     <div class="card mb-3">
+     <div class="row g-0">
+       <div class="col-md-4">
+         <img src="${data.image_url}" class="img-fluid rounded-start p-3" alt="...">
+       </div>
+       <div class="col-md-8">
+         <div class="card-body">
+           <h5 class="card-title">${data.title}</h5>
+           <p class="card-text">${data.details.slice(0,200)}......</p>
+           <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+         </div>
+       </div>
+     </div>
+   </div>
+     `
+    })
 }
 // fechCatagore()
